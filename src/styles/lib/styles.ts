@@ -31,7 +31,7 @@ export function styles() {
     // app.css
     "#root": "w-mx-1280px mh-auto p-2rem ta-center",
     ".card": "p-2em",
-    ".read-the-docs": "p-#888"
+    ".read-the-docs": "tc-#888"
   });
 
   // hover handler 😁
@@ -60,13 +60,13 @@ export function styles() {
 }
 
 const ts = () => {
-  use(property)
-  
+  use(property);
+
   makeStyles({
     body: "m-0 d-flex place-items-center w-mn-320px h-mn-100vh",
     "#root": "w-mx-1280px mh-auto"
     // more styles
   });
-  
-  tenoxui()
+
+  tenoxui();
 };
