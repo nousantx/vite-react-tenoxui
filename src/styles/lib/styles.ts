@@ -58,3 +58,15 @@ export function styles() {
   // tenoxui init
   tenoxui();
 }
+
+const ts = () => {
+  use(property)
+  
+  makeStyles({
+    body: "m-0 d-flex place-items-center w-mn-320px h-mn-100vh",
+    "#root": "w-mx-1280px mh-auto"
+    // more styles
+  });
+  
+  tenoxui()
+};
