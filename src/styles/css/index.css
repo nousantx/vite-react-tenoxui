@@ -1,0 +1,29 @@
+:root {
+  --root-back: #242424;
+  --root-color: rgba(255, 255, 255, 0.87);
+  --button-color: #1a1a1a;
+  --anchor-color:#535bf2
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --root-color: #213547;
+    --root-back: #ffffff;
+    --button-color: #f9f9f9;
+    --anchor-color: #747bff;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
