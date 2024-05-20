@@ -1,21 +1,17 @@
 :root {
-  --root-back: #242424;
-  --root-color: rgba(255, 255, 255, 0.87);
+  --line-size: 30px;
+  --root-back: #101214;
+  --root-color: #e3e6ea;
   --button-color: #1a1a1a;
-  --anchor-color:#535bf2
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  --primary: #ccf654;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --root-color: #213547;
-    --root-back: #ffffff;
+    --root-color: #101214;
+    --root-back: #e3e6ea;
     --button-color: #f9f9f9;
-    --anchor-color: #747bff;
+    --primary: #ce3cf2;
   }
 }
 
@@ -25,5 +21,45 @@ button:focus-visible {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes line-y {
+  0%,
+  100% {
+    top: 0;
+  }
+  50% {
+    top: calc(100% - var(--line-size));
+  }
+}
+
+@keyframes line-y-2 {
+  0%,
+  100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: calc(100% - var(--line-size));
+  }
+}
+
+@keyframes line-x {
+  0%,
+  100% {
+    left: 0;
+  }
+  50% {
+    left: calc(100% - var(--line-size));
+  }
+}
+
+@keyframes line-x-2 {
+  0%,
+  100% {
+    right: 0;
+  }
+  50% {
+    right: calc(100% - var(--line-size));
   }
 }
