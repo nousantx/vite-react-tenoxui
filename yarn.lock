@@ -350,10 +350,10 @@
   dependencies:
     "@swc/counter" "^0.1.3"
 
-"@tenoxui/property@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tenoxui/property/-/property-1.0.0.tgz#1874141bf1c1c46cdeab1f94d051be9acff0faa1"
-  integrity sha512-4S/RIYS6X2nrRZ8x7kWp0eBdZyThtSd6VTfYl/4r/MdsD4t1L42waoA++LQYfBBIAHw+vY+5+b+Ny1N45g1QGw==
+"@tenoxui/property@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@tenoxui/property/-/property-1.1.1.tgz#04e3cd1f8f75db7b5b14983ec85f3a9d9ade3b00"
+  integrity sha512-SXdoF1eaM9frUrmIqp2+bvEOxTGmNaXmoZcfsqgvyJulJ6OBBTaYISz72Fiiui7KhHVuI535kvOdpOKQtdsmaQ==
 
 "@types/estree@1.0.5":
   version "1.0.5"
@@ -1252,10 +1252,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-tenoxui@^0.9.0-alpha.9:
-  version "0.9.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/tenoxui/-/tenoxui-0.9.0-alpha.9.tgz#7db67277cfd12c009970eb5536106a7acf13bed6"
-  integrity sha512-US0CnVA1d5pOQKn6QOaZkHpcyGsKc35ewNnhn2tRm0iE7oQCvatnLk6iFYMd0AM7VPZzaVlbFwVkCBNjcKt8Ag==
+tenoxui@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/tenoxui/-/tenoxui-0.9.0.tgz#40c843ec630df61c646fea795262a1cc41b4d4ca"
+  integrity sha512-T92rpAJc6ByAnh9mxK5h7AyUKUNUxF27iq5MkvTgb/d4tfOBdvbgu06uHLOMutkm3mzZGDdsho9oCqClOEjprA==
 
 text-table@^0.2.0:
   version "0.2.0"
