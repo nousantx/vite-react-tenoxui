@@ -26,14 +26,14 @@ function App() {
         </div>
         <h1 className="fs-3.2rem lh-1 text-#777">Vite + React</h1>
         <div className="p-2rem">
-          <button className="btn" onClick={() => setCount((count) => count + 1)}>
+          <button className="btn" onClick={() => setCount(count => count + 1)}>
             count is {count}
           </button>
           <p>
             Edit <code>src/App.tsx</code> and save to test HMR
           </p>
         </div>
-        <p className="text-#888">Click on the Vite and React logos to learn more</p>
+        <p className="text-$root-color">Click on the Vite and React logos to learn more</p>
       </main>
     </>
   )

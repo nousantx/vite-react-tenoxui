@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /tenox
+
+User-agent: Googlebot
+Allow: /public/
+Disallow: /no-google/
+
+Sitemap: https://vite-tenoxui.web.app/sitemap.xml
