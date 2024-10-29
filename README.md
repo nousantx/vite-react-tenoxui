@@ -1,127 +1,50 @@
 # React + TypeScript + Vite
 
-## What's this?
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This is a react + vite starter template but uses tenoxui css framework for styling.
+Currently, two official plugins are available:
 
-## How's it looks like
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-This is how the new style looks like :
+## Expanding the ESLint configuration
 
-```js
-import tenoxui, { use, makeStyles } from "tenoxui";
-import property from "@tenoxui/property";
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-const styles = () => {
-  use(property);
-
-  makeStyles({
-    body: "m-0 d-flex place-items-center w-mn-320px h-mn-100vh",
-    "#root": "w-mx-1280px mh-auto"
-    // more styles
-  });
-
-  tenoxui();
-};
-```
-
-Here's the breakdown :
-
-1. Import all necessary module
+- Configure the top-level `parserOptions` property like this:
 
 ```js
-import tenoxui, { use, makeStyles } from "tenoxui";
-import property from "@tenoxui/property";
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname
+    }
+  }
+})
 ```
 
-2. What is `property`?
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
 ```js
-import property from "@tenoxui/property";
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-const styles = () => {
-  use(property);
-
-  // other code
-};
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules
+  }
+})
 ```
-
-`property` can optionally imported if you don't wanna re-define your types and properties manually. The `property` is basically bunch of types and properties that already defined before and you can just include it to your project.
-
-3. `use` function
-
-`use` is a function can store your types and properties. It will make sure the functions like `makeStyles()` and `tenoxui()` knows which class names they need to process or can processed.
-
-```js
-use({ c: "color", fs: "fontSize" });
-```
-
-After added some types and properties inside of it, you can immediately use the types as prefix class to your element :
-
-```html
-<h1 class="c-#ccf654 fs-3rem">Hello World!</h1>
-```
-
-4. `makeStyles` function
-
-```js
-makeStyles({
-  body: "bg-red",
-  "p.text": "fs-0.8rem"
-  // more
-});
-```
-
-This function allows you to give styles using specific selectors.
-
-5. Applying the styles
-
-```jsx
-import { useLayoutEffect } from "react";
-
-function App() {
-  useLayoutEffect(() => {
-    tenoxui({ c: "color", fs: "fontSize" });
-  }, []);
-  
-  return <h1 className="c-#ccf654 fs-3rem">Hello World!</h1>
-}
-```
-
-Not sure about this method, but it fast for developing your apps, styles will be applied to your element after a change to the className. The `useLayoutEffect`very rarely used rather than `useEffect`. But, since tenoxui is using DOM to handle the styling, `useLayoutEffect` make sure the style applied at the right time. Thanks :D
-
-## Getting Started with TenoxUI
-
-### Add tenoxui to your project
-
-Install tenoxui using npm or whatever you have :
-
-```sh
-npm i tenoxui --save-dev
-```
-
-### Include tenoxui to your project
-
-Here's a simple configuration on your `App.jsx` file :
-
-```jsx
-import { useLayoutEffect } from "react";
-import tenoxui from "tenoxui";
-
-const App = () => {
-  useLayoutEffect(() => {
-    tenoxui({ c: "color" });
-  }, []);
-
-  return <h1 className="c-#ccf654">Hello World!</h1>;
-};
-
-export default App;
-```
-
-## Resources
-
-- React : https://react.dev
-- Vite : https://vitejs.dev
-- Typescript : https://www.typescriptlang.org
-- TenoxUI : https://tenoxui.web.app
