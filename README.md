@@ -1,50 +1,121 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What's this?
 
-Currently, two official plugins are available:
+This is a react + vite starter template but using tenoxui as styling framework.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How's it looks like
 
-## Expanding the ESLint configuration
+This is how the new styles looks like :
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```javascript
+import { tenoxui, use, applyStyles } from 'tenoxui'
+import { property } from '@tenoxui/property'
 
-- Configure the top-level `parserOptions` property like this:
+use({ property })
+applyStyles({
+  body: 'm-0 d-flex place-items-center w-mn-320px h-mn-100vh',
+  '#root': 'w-mx-1280px mx-auto'
+  // more styles
+})
+tenoxui()
+```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname
-    }
-  }
+Here's the breakdown :
+
+1. Import all necessary module
+
+```javascript
+import { tenoxui, use, applyStyles } from 'tenoxui'
+import { property } from '@tenoxui/property'
+```
+
+2. What is `property`?
+
+```javascript
+import { property } from '@tenoxui/property'
+
+console.log(property)
+
+// Output:
+// {
+//   bg: 'background',
+//   p: 'padding',
+//   px: ['paddingLeft', 'paddingRight'],
+// }
+```
+
+`property` can optionally imported if you don't wanna rewrite your types and properties manually. The `property` is basically pre-defined types and properties (or shorthands) that ready to use.
+
+3. `use` function
+
+`use` is a function can store your tenoxui configuration. It will make sure the functions like `applyStyles()` and `tenoxui()`
+
+```javascript
+use({
+  property: { c: 'color', fs: 'fontSize' },
+  values: { full: '100%' }
 })
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+After added some types and properties inside of it, you can immediately use the types as prefix class to your element :
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```html
+<h1 class="c-#ccf654 fs-3rem">Hello World!</h1>
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules
-  }
+4. `applyStyles` function
+
+```javascript
+applyStyles({
+  body: 'bg-red',
+  'p.text': 'fs-0.8rem'
+  // more
 })
 ```
+
+This function allows you to give styles using specific selectors.
+
+5. Applying the styles (React)
+
+```javascript
+import { useLayoutEffect } from 'react'
+
+function App() {
+  useLayoutEffect(() => {
+    tenoxui({ c: 'color', fs: 'fontSize' })
+  }, [])
+
+  return <h1 className="c-#ccf654 fs-3rem">Hello World!</h1>
+}
+```
+
+## Getting Started with TenoxUI
+
+### Add tenoxui to your project
+
+Install tenoxui using npm or whatever you have :
+
+```sh
+npm i tenoxui --save-dev
+```
+
+### Include tenoxui to your project
+
+Here's a simple configuration on your `App.jsx` file :
+
+```javascript
+import { useLayoutEffect } from 'react'
+import { tenoxui } from 'tenoxui'
+
+const App = () => {
+  useLayoutEffect(() => {
+    tenoxui({ property: { c: 'color' } })
+  }, [])
+
+  return <h1 className="c-#ccf654">Hello World!</h1>
+}
+
+export default App
+```
+
